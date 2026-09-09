@@ -1,0 +1,161 @@
+*Javabean: 
+	
+	-> It is a java class that is developed with some standards:
+	-> It is always used as a helper class to pass multiple values as a single object from one class to 
+	   to another class of same project and different projects.
+	-> The standards are:
+			1.Class must be public class.
+			2.Recommonded to implements java.io.Serializable(i)
+			3.All members in the class taken as private and non-static.
+			4.Make sure that one zero param constructor is to come in the class directly or indirectly.
+			5.Every property should have one public setter method or one public getter method.
+
+*Pojo Class:
+
+	-> Pojo stands for Plain Old Java Objects.
+	-> the ordinary java class without specialities.
+	-> the ordinary java class that compiled only using jdk libraries is called Pojo class.
+	-> the ordinary java class that is not extending and implementing any technology,frameworks api classes and interfaces.
+	
+*Bean Class:
+
+	-> The Java class that is having state(Member Variables) and behaviour(Methods) and state is used inside the behaviour having reusability is called Bean class or Component Class.
+	-> The methods of bean class contains business logic with reusability.
+	-> This class is developed as Pojo class or non-pojo class.
+	
+
+*SpringBean Class:
+
+	-> The java class whose object is created & managed by spring containers is called SpringBean.
+	-> The whole life cycle of spring bean class is taken care by spring containers.
+	-> Lifecycle means object creation, object assigning,object destroy,method call using object that all activities will be taken care by spring container.
+	-> Spring Framework provide two built-in spring containers:1.BeanFactory 2.ApplicationContext.
+	-> Spring bean class can be a user-defined class or pre-defined class or third party supplied class but its lifecycle management must be done by Spring Containers.
+	->*Generally we will not take abstract class, interfaces as spring bean because they can not be instantiated.
+	->*To make java class as springbean class we need to use <bean> tag in xml file or @Component annotation.
+	-> Eg.
+			@Component
+			public class Student{
+			
+				//variables
+				//getter methods
+				//setter methods
+				//constructor
+			}
+			
+*Spring Core Module:
+
+	-> If this module used alone, we can develop only standalone applicatons in spring.
+	-> This modules gives two spring containers (BeanFactory,ApplicationContext)to perform spring bean lifecycle management and Dependency management.
+	
+	*Spring Bean LifeCycle Management:
+	
+		-> If we given java class to spring containers it will take care of total lifecycle of that spring bean class like Loading bean class, creating object, management object, destroying object.
+	
+	*Dependency Management:
+		
+		-> Assigning/Arranging dependency class object to target class object dynamically is called dependency management.
+		-> The spring bean class that uses other spring services is called Target class/Main class.
+		-> The spring bean class that acts as helper class for other spring bean class is called Dependent class/Helper class.
+		
+			Eg1. Flipkart needs DTDC Services for courier activities so flipkart is target class and DTDC is dependent class.
+			Eg2. Vehicle needs Engine Services for driving activities so vehicle is target class and Engine is dependent class.
+			Eg3. Student needs CourseMaterial services for preparation activities so student is target class and CourseMaterial is dependent class.
+			
+* Dependency Management:(IOC):
+	
+	-> It is all about keeping dependent class object ready for target class object, so the target class can use the services of dependent class while executing its own services.
+	-> Two types of dependency management are there:1.Dependency Lookup 2.Dependency Injection
+	-> Spring containers supports both Dependency Lookup and Dependency Injection but in realtime projects we use Dependency Injection.
+	
+	*Dependency Lookup:
+		
+		-> Here the target class should spend time and should write some logic to search and get dependent class object from various resources/places.
+		-> Target class searches for dependent class object and pulls it to target class object.
+		-> Eg1.Student getting CourseMaterial by request from the faculty.
+		-> Eg2.Java class writing jndi Lookup code to search and get Datasource object from jndi Registry.
+		-> Pros:
+			->The target class can search and get only required dependent class objects.
+		-> Cons:
+			->The target class should spend time and should write logic to search and gets dependent class objects.
+			
+	*Dependency Injection:
+	
+		-> Here the underlying container/server/framework/jvm dynamically assigns dependent class object to target class object at runtime.
+		-> Here underlying server/container pushes dependent class object to target class object.
+		-> Eg1.Student getting CourseMaterial dynamically faculty the moments he joins the course.
+		-> Eg2.The way JVM assigns default values to object the moment JVM creates the object of java class.
+		-> Eg3.The way Servlet Container assigns ServletConfig to servlet class object that moment it creates Servlet class object.
+		-> Pros:
+			-> Target class directly use dependent class and its services.
+			-> Target class need not to spend time or need not to write logics to search and get dependent class object because underlying container takes cares of this work.
+		-> Cons:
+			-> The underlying container may inject both necessary and unnecessary objects.
+		->*Types of Dependency Injection:
+							1.Setter Injection.
+							2.Getter Injection.
+							3.Aware Injection/Interface Injection/Contextual Injection.
+							4.Lookup Method Injection.
+							5.Method Injection/Method Replacer.
+							6.Field Injection.
+							7.Arbitary Method Injection.
+							
+* Difference Between IOC & Dependency Injection:
+
+	-> IOC is specification providing rules and guidelines to manage dependency between target and dependent classes.
+	-> Dependency Lookup and Dependency Injection are two implementation models of IOC or dependency management.
+	-> Spring container are designed to perform Dependency Management so they are also called as IOC containers.
+
+* Why Dependency Management is named as IOC:
+
+	-> IOC means Inversion Of Control that means reversing of control/process that is actually happening.
+	-> Generally programmers holds control to assign/arrange dependency class object to target class object. in IOC implementation that control is totally taken by the underlying container that means it is reverse or inversion of regular process so it is named as IOC(Martin Flower).
+	
+* Creating BeanFactory Container in Spring App:
+
+	-> By creating object for a class implementing BeanFactory(I), we can create BeanFactory container. Spring API provides multiple class implementing this BeanFactory interface like XmlBeanFactory,DefaultListableBeanFactory.
+	
+	-> Eg.
+	
+		//Locate and hold spring bean configuration file
+		FileSystemResource res = new FileSystemResource("../applicationContext.xml");
+		//this class internally uses java.io.File class to locate and hold spring bean configuration file name and location.
+		//create BeanFactory IOC Container
+		XmlBeanFactory factory = new XmlBeanFactory(res);
+		
+	-> The Above code can be placed in any kind of java app to create BeanFactory Container.
+	-> Any <filename>.xml can be given as spring bean cfg file but recommonded to take applicationContext.xml as the spring container name "ApplicationContext".
+	-> Spring bean cfg file contains the following configurations to spring containers:
+				a) Spring bean configurations.
+				b) Dependency Management Configurations
+				c) Spring bean life cycle configurations
+				d) Spring bean id's alias names configurations and etc.
+				
+*Setter Injection:
+	
+	-> If the spring container uses setter method of target class to inject/assign dependent class object to target class object then it is called Setter Injection.
+	-> When the annotation @Autowired is used on top of the class’s setter method, it is referred to as Setter Injection.
+	-> For this we need to given instructions to IOC containers using <property> tag in spring bean configuration file.
+	-> Eg.(Annotation Based)
+		
+			public class UserController 
+			{
+				private UserService userService;
+
+				@Autowired
+				public void setUserService(UserService userService) 
+				{
+					this.userService = userService;
+				}
+			}
+			
+	-> Eg.(Xml Based)
+
+			<beans ....>
+				<bean id="dt" class="java.util.Date"/>	//Dependent Class
+				<bean id ="wmg" class="com.nt.beans.WishMessageGenerator"> //Target class
+					<property name="date" ref="dt"/> //Setter Injection
+				</bean>
+			</beans>
+	
+	-> Spring container identifies spring bean class with its bean id if want to get spring bean class from spring container and if want to inject one spring bean class object to another spring bean class object we need to use bean id's.

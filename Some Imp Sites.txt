@@ -1,0 +1,17 @@
+Different Editors : editorconfig.orgd
+
+Project Related Dependencies : mvnrepository.com
+
+Git Projects:
+
+https://github.com/natarazworld/NTSPBMS615Repo.git
+https://github.com/natarazworld/NTHB412Repo.git
+https://github.com/natarazworld/NTSPBMS714Repo.git
+
+To Create Maven App using Cmd : mvn archetype:generate -DgroupId=com.example -DartifactId=my-webapp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+
+
+
+
+
