@@ -1,0 +1,338 @@
+Java Practice Questions On Access Modifiers :
+1) What is the use of access modifiers in Java?
+Answer :
+Access Modifiers in Java are used to control the visibility of fields, methods, classes and constructors.
+
+2) Can you create a sub class to the following class?
+
+class A
+{
+    private A()
+    {
+        //First Constructor
+    }
+     
+    private A(int i)
+    {
+        //Second Constructor
+    }
+}
+View Answer
+Answer :
+No, you can’t create sub classes to that class which has only private constructors.
+3) Can you find out the error in the below code?
+
+private class A
+{
+    private class B
+    {
+        //Inner class
+    }
+}
+
+Answer :
+Inner classes can be private, but outer classes can not be private.
+
+4) Does field ‘i’ of Class A be inherited to Class B in the below code?
+
+class A
+{
+    protected int i;
+}
+ 
+class B extends A
+{
+     
+}
+
+Answer :
+Yes, protected members of a class are inherited to any sub class.
+
+5) Is the below code written correctly?
+
+class A
+{
+    private class B
+    {
+        //inner class
+    }
+}
+ 
+public class MainClass extends A
+{
+    public static void main(String[] args)
+    {
+        B b = new B();
+    }
+}
+
+Answer :
+No. private inner Class B can not be instantiated outside the Class A.
+
+6) Is the below code written correctly?
+package pack1;
+ 
+class A
+{
+     
+}
+ 
+package pack2;
+ 
+class B extends A
+{
+     
+}
+Answer :
+No. Class with default (no) access modifiers can not have subclass outside the package.
+
+7) Can we declare a class as protected?
+
+Answer :
+Yes, but only inner class. Outer class can not be protected.
+
+8) Do you think the below program is written correctly? If yes, what will be the output?
+package pack1;
+ 
+class X
+{
+    protected int i = 1221;
+     
+    void methodOfX()
+    {
+        System.out.println(i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        X x = new X();
+         
+        System.out.println(x.i);
+         
+        x.methodOfX();
+    }
+}
+
+Answer :
+Yes, it is written correctly. Output will be
+1221
+1221
+
+9) Why we can’t instantiate Class-A in the below code outside the package even though it has public constructor?
+package pack1;
+ 
+class A
+{
+    public A()
+    {
+        //public constructor
+    }
+}
+ 
+package pack2;
+ 
+import pack1.*;
+ 
+class B
+{
+    A a = new A();       //Compile Time Error
+}
+
+Answer :
+Because, Class-A itself has been defined with default access modifier. That means Class-A can be instantiated within the package in which it is defined. It can not be instantiated outside the package, even though it has public constructor.
+
+10) Can a protected field of a class be inherited to subclass outside the package?
+
+Answer :
+Yes, protected members of a class are inherited to sub classes outside the package.
+
+11) Why Line 17 in the below code is throwing compile time error?
+
+package pack1;
+ 
+public class A
+{
+    protected A()
+    {
+        //protected constructor
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B
+{
+    A a = new A();
+}
+
+Answer :
+Because, we can’t instantiate a class outside the package which has only protected constructors.
+
+12) Do you think the below code compiles successfully even though it is calling super class’s protected constructor outside the package?
+
+package pack1;
+ 
+public class A
+{
+    protected A(int i)
+    {
+        //protected constructor
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B extends A
+{
+    public B()
+    {
+        super(10);     //calling super class's protected constructor
+    }
+}
+
+Answer :
+Yes, above code will compile successfully.
+
+13) Can we declare static methods as private?
+
+Answer :
+Yes, static members of a class can be private.
+
+14) Is the below code written correctly? If yes, what will be the output?
+package pack1;
+ 
+class A
+{
+    protected static String s = "A";
+}
+ 
+class B extends A
+{
+     
+}
+ 
+class C extends B
+{   
+    static void methodOfC()
+    {
+        System.out.println(s);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        C.methodOfC();
+    }
+}
+
+Answer :
+Yes, it is written correctly. Output will be A.
+
+
+15) Write the access modifiers in the increasing order of their visibility?
+
+Answer :
+private —> default or no access modifiers —> protected —> public
+
+
+16) How many public classes a .java file can have?
+
+Answer :
+Only one. A .java file can have maximum one public class.
+
+17) What will be the outcome of the below program?
+package pack1;
+ 
+public class A
+{
+    private int methodOne(int i)
+    {
+        return ++i;
+    }
+     
+    public int methodTwo(int i)
+    {
+        return methodOne(++i);
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B extends A
+{
+    int methodOne(int i)
+    {
+        return methodTwo(++i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        System.out.println(new B().methodOne(101));
+    }
+}
+
+Answer :
+104
+
+
+18) Can you find out the error in the following code snippet?
+
+class A
+{
+    public void methodOfA()
+    {
+        System.out.println("Class A");
+    }
+}
+ 
+class B extends A
+{
+    @Override
+    void methodOfA()
+    {
+        System.out.println("Class B");
+    }
+}
+
+Answer :
+The visibility of methodOfA() has been reduced to default while overriding it in the class B. You can’t reduce the visibility of a method while overriding it.
+
+19) private method can be overridden as public method. True or False?
+
+Answer :
+False. private methods are not at all inherited.
+
+20) A method of super class with default access modifier can be overridden as protected or public but not as private. True or false?
+
+Answer :
+True.
+
+21) Monu has written the code like below but it is showing compile time error. Can you help him to remove the error?
+
+private class A
+{
+    private class B
+    {
+        private class C
+        {
+             
+        }
+    }
+}
+
+Answer :
+Outer class can’t be private. Don’t declare Class A as private.

@@ -1,0 +1,8 @@
+Q) Hibernate get vs load
+Hibernate Session provide different methods to fetch data from database. Two of them are – get() and load(). There are also a lot of overloaded methods for these, that we can use in different circumstances.
+
+At first look both get() and load() seems similar because both of them fetch the data from database. However there are few differences between them, this tutorial explains about them with example code.
+
+Hibernate supports mapping of java classes to database tables and vice versa. It provides features to perform CRUD operations across all the major relational databases.
+Hibernate eliminates all the boiler-plate code that comes with JDBC and takes care of managing resources, so we can focus on business use cases rather than making sure that database operations are not causing resource leaks.
+Hibernate supports transaction management and make sure there is no inconsistent data present in the system.

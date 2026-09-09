@@ -1,0 +1,98 @@
+
+Why Java does not support multiple inheritance or what is Diamond problem in Java? 
+
+
+class Abc{
+	void eat(){
+		System.out.println("Indians eat using their hands");
+	}
+}
+
+class Xyz extends Abc{
+	void eat(){
+		System.out.println("Western people don't use their hands for eating.");
+	}
+
+}
+
+
+class MultipleInheritanceTest extends Abc{
+
+
+	psvm(){
+	
+		MultipleInheritanceTest test = new MultipleInheritanceTest();
+		test.display();
+	}
+
+
+}
+
+
+
+
+
+
+What are OOPS concepts?
+1) Inheritance
+2) Abstraction
+3) Encapsulation
+4) Polymorphism
+
+Q) What is abstraction in Java and how do we achieve it?
+Ans: Abstraction is process of hiding implementation details and showing only what is required.
+We achieve abstraction in java using abstract class and interface.
+
+
+two types : 1) Abstract  2) non abstract or concrete classes
+
+Abstract class rules:
+
+1) Its not mandatory to have abstract method in abstract class.
+2) If we define any abstract method in a class, then that class must be abstract class.
+3) We can not create an object of abstract class.
+4) If one abstract class extends another abstact class, 
+then its not manadatory for that child class to provide method implementations of abstract methods of super class.
+5) If concrete/non abstract class extends  abstract class, 
+then its  manadatory for that child class to provide method implementations of abstract methods of super class.
+
+
+Assignment:
+1) What is Data type in Java and what are different types of Data types in Java?
+2) Write a program(create methods in class) which takes those data types as parameters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1) Inheritance -> 
+Q) What is Inheritance in Java?
+Ans. Using Inheritance we can access parent class properties/methods.
+
+Q) What is signifance of Inhertiance?
+Ans. Code reusability.
+
+Q) How do we achieve inheritance in Java?
+Ans. By using extends keyword.
+
+Assignment:
+What are different types of Inheritance and write program for each.
+
+
+
+Great Grand Father -> Grand Father -> Father         -> Child  -> Grand child
+2 acre             -> 2 acre(4)   -> 8 acre(12 acre) -> 0 acre -> 12 acre + 20 acre
+
+
+
+
+

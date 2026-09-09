@@ -1,0 +1,254 @@
+package pack1;
+ 
+class A
+{
+     
+}
+ 
+package pack2;
+ 
+class B extends A
+{
+     
+}
+
+==========================================
+
+package pack1;
+ 
+class X
+{
+    protected int i = 1221;
+     
+    void methodOfX()
+    {
+        System.out.println(i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        X x = new X();
+         
+        System.out.println(x.i);
+         
+        x.methodOfX();
+    }
+}
+
+=======================================================
+
+Why we can’t instantiate Class-A in the below code outside the package even though it has public constructor?
+
+
+package pack1;
+ 
+class A
+{
+    public A()
+    {
+        //public constructor
+    }
+}
+ 
+package pack2;
+ 
+import pack1.*;
+ 
+class B
+{
+    A a = new A();       
+}
+
+
+
+============================================
+Why Line 17 in the below code is throwing compile time error?
+
+package pack1;
+ 
+public class A
+{
+    protected A()
+    {
+        
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B
+{
+    A a = new A();
+}
+
+
+===========================================================
+
+package pack1;
+ 
+public class A
+{
+    private int methodOne(int i)
+    {
+        return ++i;
+    }
+     
+    public int methodTwo(int i)
+    {
+        return methodOne(++i);
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B extends A
+{
+    int methodOne(int i)
+    {
+        return methodTwo(++i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        System.out.println(new B().methodOne(101));
+    }
+}
+
+=================================================================
+
+package pack1;
+ 
+class X
+{
+    protected int i = 1221;
+     
+    void methodOfX()
+    {
+        System.out.println(i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        X x = new X();
+         
+        System.out.println(x.i);
+         
+        x.methodOfX();
+    }
+}
+
+
+==================================================================
+
+Is the below code written correctly? If yes, what will be the output?
+
+
+package pack1;
+ 
+class A
+{
+    protected static String s = "A";
+}
+ 
+class B extends A
+{
+     
+}
+ 
+class C extends B
+{   
+    static void methodOfC()
+    {
+        System.out.println(s);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        C.methodOfC();
+    }
+}
+
+
+
+==================================================================
+
+What will be the outcome of the below program?
+
+package pack1;
+ 
+public class A
+{
+    private int methodOne(int i)
+    {
+        return ++i;
+    }
+     
+    public int methodTwo(int i)
+    {
+        return methodOne(++i);
+    }
+}
+ 
+package pack2;
+ 
+import pack1.A;
+ 
+class B extends A
+{
+    int methodOne(int i)
+    {
+        return methodTwo(++i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        System.out.println(new B().methodOne(101));
+    }
+}
+
+
+===============================================================
+
+Can you find out the error in the following code snippet?
+
+class A
+{
+    public void methodOfA()
+    {
+        System.out.println("Class A");
+    }
+}
+ 
+class B extends A
+{
+    @Override
+    void methodOfA()
+    {
+        System.out.println("Class B");
+    }
+}
+
+
+
+=================================================================
+
+

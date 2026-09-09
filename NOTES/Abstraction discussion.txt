@@ -1,0 +1,50 @@
+OOPS Concepts:
+1) Abstraction
+2) Encapsulation
+3) Inheritance
+4) Polymorphism
+
+
+1) Abstract
+
+What is Abstraction  -> Showing what is essential and hidding details.
+
+What are the ways to achieve Abstraction in Java?
+Why we create an Abstract class?
+-> By Using Abstract class we can achieve Abstraction in Java.
+-> Interface is nothing but 100% Abstract class.
+
+
+Abstract/Interface we use them at class Level.
+
+
+How do we implement Abstraction in Java?
+
+
+
+abstract void test();   Abstract method does not contain method body.
+
+void test() {
+ //Business Logic
+}       Non Abstract method contain method body.
+
+We can not create Object of Abstract class.
+But Abstract class can have Constructor.
+
+Why we use Constructor -> For Object creation.
+
+If we can't create Object of Abstract class then why we have Constructor?
+Class have different properties/attributes, when we Con gets called these properties/attributes gets default value assigned to them.
+
+
+
+So whenever the first non abstract/Concrete class Extends abstract class, it needs to provide implementation of Abstract methods.
+
+Difference between private and Abstract method?
+
+Abstract means you have to provide implementation.
+	
+
+Class Level
+Instance Variables
+Private variables
